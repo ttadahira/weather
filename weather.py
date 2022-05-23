@@ -1,4 +1,5 @@
-# coding: UTF-8
+#gitを通じてコメントを追加してみました！（折居）
+# # coding: UTF-8
 import os
 from flask import Flask, request
 
@@ -146,4 +147,3 @@ def index():
 if __name__ == "__main__":
     app.run()
 
-#gitを通じてコメントを追加してみました！
