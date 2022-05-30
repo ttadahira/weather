@@ -1,0 +1,17 @@
+/*ヘッダー*/
+header {
+    width: 100%;
+    background-color: #FFA500;
+}
+
+#logo {
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+#title {
+    margin-left: 10px;
+    display: inline-block;
+    color: white;
+    vertical-align: middle;
+}

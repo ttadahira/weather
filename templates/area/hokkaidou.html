@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<p>ここは北海道のページです</p>
+<a href="{{ url_for("pick_city", city="稚内") }}">稚内</a>
+<a href="{{ url_for("pick_city", city="旭川") }}">旭川</a>
+<a href="{{ url_for("pick_city", city="札幌") }}">札幌</a>
+<a href="{{ url_for("pick_city", city="網走") }}">網走</a>
+<a href="{{ url_for("pick_city", city="釧路") }}">釧路</a>
+<a href="{{ url_for("pick_city", city="室蘭") }}">室蘭</a>
+<a href="{{ url_for("pick_city", city="函館") }}">函館</a>
+{% endblock %}

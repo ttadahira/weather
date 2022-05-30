@@ -1,0 +1,21 @@
+<!--htmlのテンプレート作成-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- cssの適用 -->
+        <link href="/static/select_date.css" rel="stylesheet" type="text/css">
+        <title>きのうのてんき - ひづけをせんたく</title>
+    </head>
+    <body>
+        <!-- ヘッダー -->
+        <header>
+            <form method="POST" action="/">
+                <button id="logo"><img src="/static/logo.png" height="68px" width="80px" /></button>
+                <h1 id="title">きのうのてんき</h1>
+            </form>
+        </header>
+        <!--この下にコンテンツが入る-->
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

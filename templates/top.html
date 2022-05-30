@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- 日づけ検索ボタン -->
+<form method="POST" action="/select_date">
+    <button>日づけ</button>
+</form>
+<!-- 地域検索ボタン -->
+<form method="POST" action="/select_region">
+    <button>地域</button>
+</form>
+{% endblock %}
