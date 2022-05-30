@@ -2,5 +2,8 @@
 {% extends "base.html" %}
 {% block content %}
 <!--rendertemplateから変数cityを入手して代入-->
+{% if chosen_date %}
+<p>{{ chosen_date }}を選択中</p>
+{% endif %}
 <p>{{ city }}のカレンダーを表示</p>
 {% endblock %}

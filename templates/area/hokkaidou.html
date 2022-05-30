@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+
+{% if chosen_date %}
+<p>{{ chosen_date }}を選択中</p>
+{% endif %}
+
 <p>ここは北海道のページです</p>
 <a href="{{ url_for("pick_city", city="稚内") }}">稚内</a>
 <a href="{{ url_for("pick_city", city="旭川") }}">旭川</a>

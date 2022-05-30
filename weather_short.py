@@ -20,16 +20,25 @@ with open('data/data.csv', 'r') as f:
             new_line = [line[0], line[1], line[4], line[7]]
             data.append(new_line)
 
+#dateの初期値はFalse
+chosen_date = False
+
 app = Flask(__name__)
 
 # トップページ
 @app.route('/')
 def top():
+    #トップページに遷移するとdateを初期化する
+    global chosen_date
+    chosen_date = False
     return render_template('top.html')
 
 # トップページ(ロゴからの遷移用)
 @app.route('/', methods = ["POST"])
 def return_top():
+    #トップページに遷移するとdateを初期化する
+    global chosen_date
+    chosen_date = False
     return render_template('top.html')
 
 # 日付選択ページ
@@ -47,7 +56,9 @@ def select_date():
 def index():
     # ユーザに選択された日付
     date = request.form['date']
-    return render_template('select_region.html', date=date)
+    global chosen_date
+    chosen_date = date
+    return render_template('select_region.html', chosen_date=chosen_date)
 
 @app.route('/select_region', methods = ["POST", "GET"])
 def select_region():
@@ -56,11 +67,11 @@ def select_region():
 @app.route('/select_region/<area>')
 def select_area(area):
     area = str(area)
-    return render_template(f'area/{area}.html')
+    return render_template(f'area/{area}.html', chosen_date=chosen_date)
 
 @app.route('/pick_city/<city>')
 def pick_city(city):
-    return render_template('calender.html', city=city)
+    return render_template('calender.html', city=city, chosen_date=chosen_date)
 
 
 # 実行
