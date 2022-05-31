@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <!-- カレンダー -->
-<div class="wrapper">
+<div class="wrapper1">
     <h1 id="header"></h1>
     <div id="next-prev-button">
         <button id="prev" onclick="prev()">‹</button>
@@ -13,7 +13,7 @@
     </form>
 </div>
 <!-- pythonから渡された日付データ -->
-<div id="date" title={{ date }}></div>
+<div id="date" style="visibility:hidden;">{{ date }}</div>
 <!-- javascriptの適用 -->
 <script type="text/javascript" src="/static/select_date.js"></script>
 {% endblock %}

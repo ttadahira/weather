@@ -2,6 +2,7 @@
 #コメント（折居）
 from calendar import calendar
 import os
+import re
 from flask import Flask, render_template, request, redirect, url_for
 
 # デバッグを有効
@@ -9,16 +10,46 @@ os.environ["FLASK_ENV"] = "development"
 
 # データの取得
 data = []
-data_count = 0
-with open('data/data.csv', 'r') as f:
+with open('data/data2.csv', 'r', encoding='utf-8') as f:
     for line in f:
-        data_count += 1
-        if data_count >= 7:
-            line = line.replace('\n', '')
-            line = line.split(',')
-            # 日付、天気、最高気温、最低気温のデータ
-            new_line = [line[0], line[1], line[4], line[7]]
-            data.append(new_line)
+        line = line.replace('\n', '')
+        line = line.split(',')
+        # 天気概況のグループ分け
+        pattern_1 = r'^快晴|^晴'
+        pattern_2 = r'^曇|^薄曇'
+        pattern_3 = r'^霧雨|^雨'
+        pattern_4 = r'^霧'
+        pattern_5 = r'^大雨|^暴風雨'
+        pattern_6 = r'^みぞれ'
+        pattern_7 = r'^雪|^あられ'
+        pattern_8 = r'^大雪|^暴風雪|^ふぶき|^ひょう'
+        pattern_9 = r'^雷'
+        pattern_10 = r'^大風|^地ふぶき'
+        # 天気概況の簡略化
+        if re.compile(pattern_1).search(line[1]):
+            line[1] = 'hare'
+        elif re.compile(pattern_2).search(line[1]):
+            line[1] = 'kumori'
+        elif re.compile(pattern_3).search(line[1]):
+            line[1] = 'ame'
+        elif re.compile(pattern_4).search(line[1]):
+            line[1] = 'kosame'
+        elif re.compile(pattern_5).search(line[1]):
+            line[1] = 'ooame'
+        elif re.compile(pattern_6).search(line[1]):
+            line[1] = 'mizore'
+        elif re.compile(pattern_7).search(line[1]):
+            line[1] = 'yuki'
+        elif re.compile(pattern_8).search(line[1]):
+            line[1] = 'ooyuki'
+        elif re.compile(pattern_9).search(line[1]):
+            line[1] = 'kaminari'
+        elif re.compile(pattern_10).search(line[1]):
+            line[1] = 'kaze'
+        # 天気概況が「×」でないならデータ追加
+        if line[1] != '×':
+            # 日付、天気、最高気温、最低気温、地域のデータ
+            data.append(line)
 
 #dateの初期値はFalse
 chosen_date = False
@@ -49,7 +80,7 @@ def select_date():
     for line in data:
         date_list.append(line[0])
     date = ",".join(date_list)
-    # check_date.htmlを実行
+    # select_date.htmlを実行
     return render_template('select_date.html', date=date)
 
 @app.route('/index', methods = ["POST"])
@@ -69,9 +100,20 @@ def select_area(area):
     area = str(area)
     return render_template(f'area/{area}.html', chosen_date=chosen_date)
 
+# カレンダー表示ページ
 @app.route('/pick_city/<city>')
 def pick_city(city):
-    return render_template('calender.html', city=city, chosen_date=chosen_date)
+    count = 0
+    data_str = ""
+    for line in data:
+        if line[4] == city:
+            count += 1
+            line_str = ','.join(line)
+            if count == 1:
+                data_str = data_str + line_str
+            else:
+                data_str = data_str + '\n' + line_str
+    return render_template('calender.html', city=city, chosen_date=chosen_date, data=data_str)
 
 
 # 実行

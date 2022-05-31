@@ -1,36 +1,70 @@
 @charset "utf-8";
 
-/*全体*/
-.wrapper{
-    max-width: 600px;
+* {
+    font-family: sans-serif;
+}
+
+/*カレンダー全体*/
+.wrapper1{
+    max-width: 620px;
     margin: 0 auto;
     color: #666;
 }
+.wrapper2{
+    max-width: 700px;
+    margin: 0 auto;
+    color: #666;
+}
+
+/*ヘッダー*/
+header {
+    width: 100%;
+    background-color: #FFA500;
+}
+
+#logo {
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+#title {
+    margin-left: 10px;
+    display: inline-block;
+    color: white;
+    vertical-align: middle;
+}
+
+/*カレンダー*/
 #header {
     text-align: center;
-    font-size: 24px;
+    font-size: 30px;
     width: 100%;
     margin: 1rem 0 0;
 }
 
-/*カレンダー*/
 #calendar {
     text-align: center;
     width: 100%;
 }
 table {
-    outline: 2px solid #ddd;
+    outline: 2px solid #808080;
     border-collapse: collapse;
     width: 100%;
     table-layout: fixed;
 }
 th {
+    background-color: #F5C9C6;
     padding-top: 10px;
     padding-bottom: 10px;
     color: #000;
+    height: 40px;
+}
+td {
+    width: 100%;
+    height: 50px;
 }
 th, td {
-    outline: 1px solid #dddddd;
+    outline: 1px solid #808080;
     text-align: center;
 }
 /*日曜日*/
@@ -43,21 +77,76 @@ td:last-child {
 }
 /*前後月の日付*/
 td.disabled {
+    background-color: white;
     padding-top: 10px;
     padding-bottom: 10px;
     color: #ccc;
 }
 td.day{
+    background-color: white;
     padding-top: 10px;
     padding-bottom: 10px;
 }
-/*本日*/
-#today {
-    background-color: #D65E72;
-    border: none;
-    color: #fff;
+#tenki {
     width: 100%;
-    height: 42px;
+    height: 90px;
+}
+/*データのある日*/
+#selectable {
+    font-size: 16px;
+    background-color: #FAF0BE;
+    border: none;
+    color: black;
+    width: 100%;
+    height: 68px;
+}
+#latest1 {
+    font-size: 16px;
+    background-color: #FF608B;
+    border: none;
+    color: black;
+    width: 100%;
+    height: 68px;
+}
+#oldest1 {
+    font-size: 16px;
+    background-color: #1E90FF;
+    border: none;
+    color: black;
+    width: 100%;
+    height: 68px;
+}
+#chosen {
+    font-size: 16px;
+    background-color: #F4DD6C;
+    border: none;
+    color: black;
+    width: 100%;
+    height: 108px;
+}
+#latest2 {
+    font-size: 16px;
+    background-color: #FF608B;
+    border: none;
+    color: black;
+    width: 100%;
+    height: 108px;
+}
+#oldest2 {
+    font-size: 16px;
+    background-color: #1E90FF;
+    border: none;
+    color: black;
+    width: 100%;
+    height: 108px;
+}
+#icon {
+    font-size: 16px;
+    background-color: #FAF0BE;
+    border: none;
+    color: black;
+    width: 100%;
+    height: 108px;
 }
 
 /*ボタン*/
