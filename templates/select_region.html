@@ -7,18 +7,18 @@
 
 <div class="cat">
     <img src="/static/image/color_area.png">
-    <div class="button001">
+    <div class="button003">
         <!--select_areaという関数にアクセスしてareaという引数を渡していいるリンク -->
-        <a class="hokkaidou" href="/select_region/hokkaidou">北海道</a>
-        <a class="touhoku" href="/select_region/touhoku">東北</a>
-        <a class="kantou_kousin" href="/select_region/kantou_kousin">関東・甲信</a>
-        <a class="tyuubu" href="/select_region/tyuubu">中部</a>
-        <a href="{{ url_for("select_area", area="tyuubu") }}">中部</a>
-        <a href="{{ url_for("select_area", area="kinnki") }}">近畿</a>
-        <a href="{{ url_for("select_area", area="tyuugoku_sikoku") }}">中国・四国</a>
-        <a href="{{ url_for("select_area", area="kyuusyuu") }}">九州</a>
-        <a href="{{ url_for("select_area", area="okinawa") }}">沖縄</a>
+        <a class="hokkaidou" href="/select_region/hokkaidou">北海道・東北<br>(ほっかいどう・<br>とうほく)</a>
+        <a class="kantou_kousin" href="/select_region/kantou_kousin">関東<br>(かんとう)</a>
+        <a class="tyuubu" href="/select_region/tyuubu">中部<br>(ちゅうぶ)</a>
+        <a class="kinki" href="/select_region/kinki">近畿<br>(きんき)</a>
+        <a class="tyuugoku" href="/select_region/tyuugoku">中国<br>(ちゅうごく)</a>
+        <a class="sikoku" href="/select_region/sikoku">四国<br>(しこく)</a>
+        <a class="kyuusyuu_okinawa" href="/select_region/kyuusyuu_okinawa">九州・沖縄<br>(きゅうしゅう・<br>おきなわ)</a>
     </div>
 </div>
+
+
 </form>
 {% endblock %}
