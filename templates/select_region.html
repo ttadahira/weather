@@ -5,9 +5,9 @@
 <p>{{ chosen_date }}を選択中</p>
 {% endif %}
 
-<div>
+<div class="button001">
     <!--select_areaという関数にアクセスしてareaという引数を渡していいるリンク -->
-    <a href="{{ url_for("select_area", area="hokkaidou") }}">北海道</a>
+    <a href="/select_region/hokkaidou">北海道</a>
     <a href="{{ url_for("select_area", area="touhoku") }}">東北</a>
     <a href="{{ url_for("select_area", area="kantou_kousin") }}">関東・甲信</a>
     <a href="{{ url_for("select_area", area="tyuubu") }}">中部</a>

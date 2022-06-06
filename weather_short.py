@@ -85,7 +85,7 @@ def index():
 def select_region():
     return render_template('select_region.html')
 
-@app.route('/select_region/<area>')
+@app.route('/select_region/<area>', methods = ["POST", "GET"])
 def select_area(area):
     area = str(area)
     return render_template(f'area/{area}.html', chosen_date=chosen_date)
