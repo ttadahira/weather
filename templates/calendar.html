@@ -1,0 +1,26 @@
+<!--カレンダー用のhtml-->
+{% extends "base.html" %}
+{% block content %}
+<!--rendertemplateから変数cityを入手して代入-->
+{% if chosen_date %}
+<p>{{ chosen_date }}を選択中</p>
+{% endif %}
+<p>{{ city }}のカレンダーを表示</p>
+<!-- カレンダー -->
+<div class="wrapper2">
+    <h1 id="calendar-header"></h1>
+    <div id="next-prev-button">
+        <button id="prev" onclick="prev()">‹</button>
+        <button id="next" onclick="next()">›</button>
+    </div>
+    <!-- 日にちをサーバーに渡す -->
+    <form method="POST" action="/index">
+        <div id="calendar"></div>
+    </form>
+</div>
+<!-- pythonから渡された日付データ -->
+<div id="date">{{ chosen_date }}</div>
+<div id="data">{{ data }}</div>
+<!-- javascriptの適用 -->
+<script type="text/javascript" src="/static/calendar.js"></script>
+{% endblock %}
