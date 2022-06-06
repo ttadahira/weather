@@ -25,7 +25,8 @@ if __name__ == "__main__":
   #都市を網羅
   for place, ja_name in zip(place_name, ja_names):
     #最終的にデータを集めるリスト
-    All_list = [['年月日', '平均気温', '天気概況（昼）', '都市']]
+    All_list = []
+    row_list = ['年月日', '平均気温', '天気概況（昼）', '都市']
     print(place)
     print(ja_name)
     index = place_name.index(place)
@@ -54,10 +55,11 @@ if __name__ == "__main__":
           data = row.findAll('td')
 
           #データ取り出し
-          rowData = []
-          rowData.append(str(year) + "/" + str(month) + "/" + str(data[0].string))
+          rowData = [] #空
+          rowData.append(str(year) + "/" + str(month) + "/" + str(data[0].string)) #年月日
           #文字列を数字(float)に変換
-          rowData.append(str2float(data[6].string)) #平均気温
+          rowData.append(str2float(data[7].string)) #最高気温
+          rowData.append(str2float(data[8].string)) #最低気温
           rowData.append(data[19].string) #天気概況（昼）
           rowData.append(ja_name)
 
@@ -65,6 +67,12 @@ if __name__ == "__main__":
           All_list.append(rowData)
 
     #都市ごとにファイルを生成(csvファイル形式。名前は都市名)
-    with open(place + '.csv', 'w',encoding="utf_8_sig") as file: #文字化け防止
-      writer = csv.writer(file, lineterminator='\n')
-      writer.writerows(All_list)
+    if place == "sapporo":
+      with open('data/weather_data.csv', 'w',encoding="utf_8_sig") as file: #文字化け防止
+        writer = csv.writer(file, lineterminator='\n')
+        writer.writerow(row_list)
+        writer.writerows(All_list)
+    else:
+      with open('data/weather_data.csv', 'a',encoding="utf_8_sig") as file: #文字化け防止
+        writer = csv.writer(file, lineterminator='\n')
+        writer.writerows(All_list)
