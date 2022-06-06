@@ -1,3 +1,4 @@
+#実行するとweather_data2.csvファイルが生成or上書きされる
 import requests
 import csv
 from bs4 import BeautifulSoup
