@@ -173,3 +173,5 @@ td.day{
 #next {
     float: right;
 }
+
+@import url("button.css")
