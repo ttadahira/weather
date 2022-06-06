@@ -1,32 +1,28 @@
 @charset "utf-8";
 
 * {
+    margin: 0;
+    padding: 0;
     font-family: sans-serif;
-}
-
-/*カレンダー全体*/
-.wrapper1{
-    max-width: 620px;
-    margin: 0 auto;
-    color: #666;
-}
-.wrapper2{
-    max-width: 700px;
-    margin: 0 auto;
-    color: #666;
 }
 
 /*ヘッダー*/
 header {
-    width: 100%;
+    max-width: 100%;
+    margin: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-width: 904px;
     background-color: #FFA500;
 }
-
 #logo {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
     margin-left: 10px;
     vertical-align: middle;
 }
-
 #title {
     margin-left: 10px;
     display: inline-block;
@@ -34,14 +30,37 @@ header {
     vertical-align: middle;
 }
 
+/*受け渡すデータを非表示*/
+#date {
+    display: none;
+}
+#data {
+    display: none;
+}
+
+/*カレンダー全体*/
+.wrapper1{
+    width: 620px;
+    margin: 0 auto;
+    padding-left: 150px;
+    padding-right: 150px;
+    color: #666;
+}
+.wrapper2{
+    width: 700px;
+    margin: 0 auto;
+    padding-left: 110px;
+    padding-right: 110px;
+    color: #666;
+}
+
 /*カレンダー*/
-#header {
+#calendar-header {
     text-align: center;
     font-size: 30px;
     width: 100%;
     margin: 1rem 0 0;
 }
-
 #calendar {
     text-align: center;
     width: 100%;
@@ -82,7 +101,7 @@ td.disabled {
     padding-bottom: 10px;
     color: #ccc;
 }
-td.day{
+td.day {
     background-color: white;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -98,7 +117,7 @@ td.day{
     border: none;
     color: black;
     width: 100%;
-    height: 68px;
+    height: 70px;
 }
 #latest1 {
     font-size: 16px;
@@ -106,7 +125,7 @@ td.day{
     border: none;
     color: black;
     width: 100%;
-    height: 68px;
+    height: 70px;
 }
 #oldest1 {
     font-size: 16px;
@@ -114,7 +133,7 @@ td.day{
     border: none;
     color: black;
     width: 100%;
-    height: 68px;
+    height: 70px;
 }
 #chosen {
     font-size: 16px;
@@ -130,7 +149,7 @@ td.day{
     border: none;
     color: black;
     width: 100%;
-    height: 108px;
+    height: 110px;
 }
 #oldest2 {
     font-size: 16px;
@@ -138,7 +157,7 @@ td.day{
     border: none;
     color: black;
     width: 100%;
-    height: 108px;
+    height: 110px;
 }
 #icon {
     font-size: 16px;
@@ -146,7 +165,7 @@ td.day{
     border: none;
     color: black;
     width: 100%;
-    height: 108px;
+    height: 110px;
 }
 
 /*ボタン*/
@@ -237,3 +256,34 @@ img {
 .button001 a:hover:after {
     border-color: #FFF;
 }
+
+/*マウスオーバー*/
+#chosen:hover + .mouseover {
+    display: block;
+}
+#latest2:hover + .mouseover {
+    display: block;
+}
+#oldest2:hover + .mouseover {
+    display: block;
+}
+#icon:hover + .mouseover {
+    display: block;
+}
+.mouseover {
+    display: none;
+    position: absolute;
+    color: #000;
+    width: 100px;
+    height: 100px;
+    padding: 15px;
+    margin-top: -120px;
+    margin-left: 100px;
+    font-size: 13px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+@import url("button.css")
+

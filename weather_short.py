@@ -1,6 +1,5 @@
 # coding: UTF-8
 #コメント（折居）
-from calendar import calendar
 import os
 import re
 from flask import Flask, render_template, request, redirect, url_for
@@ -8,44 +7,35 @@ from flask import Flask, render_template, request, redirect, url_for
 # デバッグを有効
 os.environ["FLASK_ENV"] = "development"
 
+# 天気の簡略化
+weather = {'快晴':'晴れ','晴':'晴れ','曇':'曇り','薄曇':'曇り','霧雨':'雨','雨':'雨','霧':'小雨' \
+           ,'大雨':'大雨','暴風雨':'大雨','みぞれ':'みぞれ','雪':'雪','あられ':'雪','大雪':'大雪' \
+           ,'暴風雪':'大雪','ふぶき':'大雪','ひょう':'大雪','雷':'雷','大風':'風','地ふぶき':'風'}
+# 天気概況リスト
+tenki_list = ['快晴','晴','曇','薄雲','霧雨','雨','霧','大雨','暴風雨','みぞれ','雪','あられ' \
+              ,'大雪','暴風雪','ふぶき','ひょう','雷','大風','地ふぶき']
 # データの取得
 data = []
 with open('data/data2.csv', 'r', encoding='utf-8') as f:
     for line in f:
         line = line.replace('\n', '')
         line = line.split(',')
-        # 天気概況のグループ分け
-        pattern_1 = r'^快晴|^晴'
-        pattern_2 = r'^曇|^薄曇'
-        pattern_3 = r'^霧雨|^雨'
-        pattern_4 = r'^霧'
-        pattern_5 = r'^大雨|^暴風雨'
-        pattern_6 = r'^みぞれ'
-        pattern_7 = r'^雪|^あられ'
-        pattern_8 = r'^大雪|^暴風雪|^ふぶき|^ひょう'
-        pattern_9 = r'^雷'
-        pattern_10 = r'^大風|^地ふぶき'
-        # 天気概況の簡略化
-        if re.compile(pattern_1).search(line[1]):
-            line[1] = 'hare'
-        elif re.compile(pattern_2).search(line[1]):
-            line[1] = 'kumori'
-        elif re.compile(pattern_3).search(line[1]):
-            line[1] = 'ame'
-        elif re.compile(pattern_4).search(line[1]):
-            line[1] = 'kosame'
-        elif re.compile(pattern_5).search(line[1]):
-            line[1] = 'ooame'
-        elif re.compile(pattern_6).search(line[1]):
-            line[1] = 'mizore'
-        elif re.compile(pattern_7).search(line[1]):
-            line[1] = 'yuki'
-        elif re.compile(pattern_8).search(line[1]):
-            line[1] = 'ooyuki'
-        elif re.compile(pattern_9).search(line[1]):
-            line[1] = 'kaminari'
-        elif re.compile(pattern_10).search(line[1]):
-            line[1] = 'kaze'
+        # 簡略化を適応
+        for key in weather:
+            # 「時々」、「後」パターン
+            for tenki in tenki_list:
+                tokidoki = '^{0}時々{1}'.format(key, tenki)
+                nochi = '^{0}後{1}'.format(key, tenki)
+                if re.compile(tokidoki).search(line[1]):
+                    line[1] = weather[key] + 'ときどき' + weather[tenki]
+                elif re.compile(nochi).search(line[1]):
+                    line[1] = weather[key] + 'のち' + weather[tenki]
+            # それ以外のパターン
+            match = re.search(r'ときどき|のち', line[1])
+            if match == None:
+                pattern = '^{}'.format(key)
+                if re.compile(pattern).search(line[1]):
+                    line[1] = weather[key]
         # 天気概況が「×」でないならデータ追加
         if line[1] != '×':
             # 日付、天気、最高気温、最低気温、地域のデータ
@@ -113,7 +103,7 @@ def pick_city(city):
                 data_str = data_str + line_str
             else:
                 data_str = data_str + '\n' + line_str
-    return render_template('calender.html', city=city, chosen_date=chosen_date, data=data_str)
+    return render_template('calendar.html', city=city, chosen_date=chosen_date, data=data_str)
 
 
 # 実行

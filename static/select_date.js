@@ -52,7 +52,7 @@ function next(){
 function showProcess(date) {
     var year = date.getFullYear();
     var month = date.getMonth();
-    document.querySelector('#header').innerHTML = year + '<ruby>年<rt>ねん</rt></ruby> ' + (month + 1) + '<ruby>月<rt>がつ</rt></ruby>';
+    document.querySelector('#calendar-header').innerHTML = year + '<ruby>年<rt>ねん</rt></ruby> ' + (month + 1) + '<ruby>月<rt>がつ</rt></ruby>';
 
     var calendar = createProcess(year, month);
     document.querySelector('#calendar').innerHTML = calendar;
