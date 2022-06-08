@@ -203,6 +203,12 @@ img {
     margin: 0 auto;
    }
 
+.dog {
+    width: 800px;
+    position: relative;
+    margin: 0 auto;
+   }
+
 /*地域選択用のボタン */
 *,
 *:before,
@@ -233,6 +239,9 @@ img {
     justify-content: space-around;
     align-items: center;
     margin: 0 auto;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
     max-width: 220px;
     color: #FFF;
     transition: 0.3s ease-in-out;
@@ -244,70 +253,310 @@ img {
     background: linear-gradient(270deg, rgba(117,188,255,1) 0%, rgba(62,159,252,1) 100%);
 }
 
-/*地域の場所に応じてボタンを配置*/
+/*全国地域の場所に応じてボタンを配置*/
 .cat > .button003 > .hokkaidou {
     position: absolute;
-    top: 211px;
-    left: 640px;
-    -ms-transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
+    top: 90px;
+    left: 600px;
+    }
+
+.cat > .button003 > .touhoku {
+    position: absolute;
+    top: 260px;
+    left: 630px;
     }
 
 .cat > .button003 > .tyuubu {
     position: absolute;
     top: 383px;
     left: 482px;
-    -ms-transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
     }
 
 .cat > .button003 > .kantou_kousin {
     position: absolute;
     top: 439px;
     left: 600px;
-    -ms-transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
     }
 
 .cat > .button003 > .kinki {
     position: absolute;
     top: 468px;
     left: 404px;
-    -ms-transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
     }
 
 .cat > .button003 > .tyuugoku {
     position: absolute;
     top: 410px;
     left: 290px;
-    -ms-transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
     }
 
 .cat > .button003 > .sikoku {
     position: absolute;
     top: 550px;
     left: 293px;
-    -ms-transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
     }
 
 .cat > .button003 > .kyuusyuu_okinawa {
     position: absolute;
     top: 500px;
     left: 60px;
-    -ms-transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
     }
 
+/*北海道のボタン配置*/
+.dog > .button003 > .sapporo {
+    position: absolute;
+    top: 280px;
+    left: 190px;
+    }
+
+.dog > .button003 > .muroran {
+    position: absolute;
+    top: 400px;
+    left: 220px;
+    }
+
+.dog > .button003 > .hakodate {
+    position: absolute;
+    top: 509px;
+    left: 140px;   
+    }
+/*東北のボタン配置*/
+.dog > .button003 > .aomori {
+    position: absolute;
+    top: 120px;
+    left: 520px;
+    }
+.dog > .button003 > .morioka {
+    position: absolute;
+    top: 240px;
+    left: 550px;
+    }
+.dog > .button003 > .akita {
+    position: absolute;
+    top: 230px;
+    left: 330px;
+    }
+.dog > .button003 > .sendai {
+    position: absolute;
+    top: 390px;
+    left: 530px;
+    }
+.dog > .button003 > .yamagata {
+    position: absolute;
+    top: 380px;
+    left: 330px;
+    }
+.dog > .button003 > .hukusima {
+    position: absolute;
+    top: 500px;
+    left: 450px;
+    }
+/*関東のボタン配置*/
+.dog > .button003 > .maebasi {
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    } 
+.dog > .button003 > .utunomiya {
+    position: absolute;
+    top: 90px;
+    left: 460px;
+    } 
+.dog > .button003 > .kumagaya {
+    position: absolute;
+    top: 260px;
+    left: 410px;
+    } 
+.dog > .button003 > .mito {
+    position: absolute;
+    top: 210px;
+    left: 610px;
+    } 
+.dog > .button003 > .toukyou {
+    position: absolute;
+    top: 370px;
+    left: 340px;
+    } 
+.dog > .button003 > .tyousi {
+    position: absolute;
+    top: 405px;
+    left: 610px;
+    } 
+.dog > .button003 > .yokohama {
+    position: absolute;
+    top: 480px;
+    left: 390px;
+    } 
+/*中部のボタン配置*/
+.dog > .button003 > .niigata {
+    position: absolute;
+    top: 120px;
+    left: 530px;
+    }   
+.dog > .button003 > .toyama {
+    position: absolute;
+    top: 220px;
+    left: 270px;
+    }    
+.dog > .button003 > .kanazawa {
+    position: absolute;
+    top: 280px;
+    left: 140px;
+    }   
+.dog > .button003 > .hukui {
+    position: absolute;
+    top: 360px;
+    left: 100px;
+    }   
+.dog > .button003 > .nagano {
+    position: absolute;
+    top: 280px;
+    left: 430px;
+    }   
+.dog > .button003 > .gihu {
+    position: absolute;
+    top: 440px;
+    left: 160px;
+    }   
+.dog > .button003 > .kouhu {
+    position: absolute;
+    top: 410px;
+    left: 470px;
+    }   
+.dog > .button003 > .sizuoka {
+    position: absolute;
+    top: 520px;
+    left: 450px;
+    } 
+.dog > .button003 > .nagoya {
+    position: absolute;
+    top: 520px;
+    left: 230px;
+    }  
+/*近畿のボタン配置*/
+.dog > .button003 > .koube {
+    position: absolute;
+    top: 270px;
+    left: 290px;
+    }
+.dog > .button003 > .oosaka {
+    position: absolute;
+    top: 315px;
+    left: 405px;
+    }
+.dog > .button003 > .kyouto {
+    position: absolute;
+    top: 160px;
+    left: 450px;
+    }
+.dog > .button003 > .wakayama {
+    position: absolute;
+    top: 410px;
+    left: 350px;
+    }
+.dog > .button003 > .nara {
+    position: absolute;
+    top: 290px;
+    left: 520px;
+    }
+.dog > .button003 > .hikone {
+    position: absolute;
+    top: 150px;
+    left: 610px;
+    }
+.dog > .button003 > .tu {
+    position: absolute;
+    top: 270px;
+    left: 630px;
+    }
+/*中国のボタン配置*/
+.dog > .button003 > .tottori {
+    position: absolute;
+    top: 150px;
+    left: 630px;
+    }
+.dog > .button003 > .matue {
+    position: absolute;
+    top: 150px;
+    left: 450px;
+    }
+.dog > .button003 > .okayama {
+    position: absolute;
+    top: 440px;
+    left: 600px;
+    }
+.dog > .button003 > .hirosima {
+    position: absolute;
+    top: 470px;
+    left: 360px;
+    }
+.dog > .button003 > .simonoseki {
+    position: absolute;
+    top: 540px;
+    left: 120px;
+    }
+/*四国のボタン配置*/
+.dog > .button003 > .takamatu {
+    position: absolute;
+    top: 130px;
+    left: 540px;
+    }
+.dog > .button003 > .matuyama {
+    position: absolute;
+    top: 220px;
+    left: 160px;
+    }
+.dog > .button003 > .tokusima {
+    position: absolute;
+    top: 210px;
+    left: 670px;
+    }
+.dog > .button003 > .kouti {
+    position: absolute;
+    top: 370px;
+    left: 410px;
+    }
+/*九州・沖縄のボタン配置*/
+.dog > .button003 > .hukuoka {
+    position: absolute;
+    top: 50px;
+    left: 450px;
+    }
+.dog > .button003 > .saga {
+    position: absolute;
+    top: 150px;
+    left: 370px;
+    }
+.dog > .button003 > .ooita {
+    position: absolute;
+    top: 170px;
+    left: 690px;
+    }
+.dog > .button003 > .nagasaki {
+    position: absolute;
+    top: 290px;
+    left: 370px;
+    }
+.dog > .button003 > .kumamoto {
+    position: absolute;
+    top: 240px;
+    left: 560px;
+    }
+.dog > .button003 > .miyazaki {
+    position: absolute;
+    top: 375px;
+    left: 650px;
+    }
+.dog > .button003 > .kagosima {
+    position: absolute;
+    top: 480px;
+    left: 450px;
+    }
+.dog > .button003 > .naha {
+    position: absolute;
+    top: 420px;
+    left: 190px;
+    }
 /*マウスオーバー*/
 #chosen:hover + .mouseover {
     display: block;
