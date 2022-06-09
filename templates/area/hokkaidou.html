@@ -6,13 +6,13 @@
 {% endif %}
 
 <p>ここは北海道のページです</p>
-<div>
-<a href="{{ url_for("pick_city", city="稚内") }}">稚内</a>
-<a href="{{ url_for("pick_city", city="旭川") }}">旭川</a>
-<a href="{{ url_for("pick_city", city="札幌") }}">札幌</a>
-<a href="{{ url_for("pick_city", city="網走") }}">網走</a>
-<a href="{{ url_for("pick_city", city="釧路") }}">釧路</a>
-<a href="{{ url_for("pick_city", city="室蘭") }}">室蘭</a>
-<a href="{{ url_for("pick_city", city="函館") }}">函館</a>
+<div class="dog">
+    <img src="/static/image/hokai.png">
+    <div class="button003">
+        <a href="{{ url_for("pick_city", city="稚内") }}">稚内</a>
+        <a class="sapporo" href="{{ url_for("pick_city", city="札幌") }}">札幌<br>(さっぽろ)</a>
+        <a class="muroran" href="{{ url_for("pick_city", city="室蘭") }}">室蘭<br>(むろらん)</a>
+        <a class="hakodate" href="{{ url_for("pick_city", city="函館") }}">函館<br>(はこだて)</a>
+    </div>
 </div>
 {% endblock %}

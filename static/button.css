@@ -1,37 +1,110 @@
-.zenkoku {
-    width: 50%;
-   }
-.button001 a {
-    background: #eee;
+/*地域選択用のボタン */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 62.5%;/*rem算出をしやすくするために*/
+}
+
+/* 003 */
+.button003 a {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.5;
+    display: inline-block;
+    padding: 1rem 1rem;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    letter-spacing: 0.1em;
     border-radius: 3px;
     position: relative;
-    display: flex;
     justify-content: space-around;
     align-items: center;
     margin: 0 auto;
-    max-width: 280px;
-    padding: 10px 25px;
-    color: #313131;
-    transition: 0.3s ease-in-out;
-    font-weight: 500;
-}
-.button001 a:hover {
-    background: #313131;
+    max-width: 220px;
     color: #FFF;
-}
-.button001 a:after {
-    content: '';
-    width: 5px;
-    height: 5px;
-    border-top: 3px solid #313131;
-    border-right: 3px solid #313131;
-    transform: rotate(45deg) translateY(-50%);
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    border-radius: 1px;
     transition: 0.3s ease-in-out;
+    background: rgb(149,202,252);
+    background: linear-gradient(270deg, rgba(149,202,252,1) 0%, rgba(107,182,255,1) 100%);
 }
-.button001 a:hover:after {
-    border-color: #FFF;
+.button003 a:hover {
+    background: rgb(117,188,255);
+    background: linear-gradient(270deg, rgba(117,188,255,1) 0%, rgba(62,159,252,1) 100%);
 }
+
+/*地域の場所に応じてボタンを配置*/
+.cat > .button003 > .hokkaidou {
+    position: absolute;
+    top: 211px;
+    left: 640px;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    }
+
+.cat > .button003 > .tyuubu {
+    position: absolute;
+    top: 383px;
+    left: 482px;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    }
+
+.cat > .button003 > .kantou_kousin {
+    position: absolute;
+    top: 439px;
+    left: 600px;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    }
+
+.cat > .button003 > .kinki {
+    position: absolute;
+    top: 468px;
+    left: 404px;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    }
+
+.cat > .button003 > .tyuugoku {
+    position: absolute;
+    top: 410px;
+    left: 290px;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    }
+
+.cat > .button003 > .sikoku {
+    position: absolute;
+    top: 550px;
+    left: 293px;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    }
+
+.cat > .button003 > .kyuusyuu_okinawa {
+    position: absolute;
+    top: 500px;
+    left: 60px;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    }
