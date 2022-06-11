@@ -1,11 +1,26 @@
 <!--カレンダー用のhtml-->
 {% extends "base.html" %}
 {% block content %}
+<!-- ページ説明 -->
+<div class="page">
+    <p>コメントをここに表示</p>
+</div><br>
 <!--rendertemplateから変数cityを入手して代入-->
 {% if chosen_date %}
-<p>{{ chosen_date }}を選択中</p>
+<div class="choose">
+    <p>{{ chosen_date }}を選択中</p>
+</div>
 {% endif %}
-<p>{{ city }}のカレンダーを表示</p>
+<div class="choose">
+    <p>{{ city }}のカレンダーを表示</p>
+</div>
+<!-- キャラ説明文 -->
+<div class="detail-contents">
+    <img src="/static/chara.png" height="176px" width="177px" />
+    <div class="detail">
+        <p>コメントをここに表示</p>
+    </div>
+</div>
 <!-- カレンダー -->
 <div class="wrapper2">
     <h1 id="calendar-header"></h1>

@@ -1,7 +1,9 @@
 const week = ['日', '月', '火', '水', '木', '金', '土']
 const week_ruby = ['にち', 'げつ', 'か', 'すい', 'もく', 'きん', 'ど']
+const today = new Date();
 // 天気と画像データを結びつける
 const icon = {'晴れ':'hare.png', '曇り':'kumori.png', '小雨':'kosame.png', '雨':'ame.png', '大雨':'ooame.png', 'みぞれ':'mizore.png', '雪':'yuki.png', '大雪':'ooyuki.png', '雷':'kaminari.png', '風':'kaze.png'}
+const tenki_ruby = {'晴':'は', '曇':'くも', '小雨':'こさめ', '大雨':'おおあめ', '雨':'あめ', '大雪':'おおゆき', '雪':'ゆき', '雷':'かみなり', '風':'かぜ'}
 // ユーザが選択した日付を基本の日付にする
 var chosen_date = document.getElementById('date').textContent;
 const chosen_element = chosen_date.split('/')
@@ -40,32 +42,59 @@ for (var i = 0; i < data_list.length; i++) {
 }
 // 月末だとずれる可能性があるため、1日固定で取得
 if (chosen_date === 'False') {
-    var showDate = new Date(newdate.getFullYear(), newdate.getMonth(), 1);
+    if (data_list[0].length !== 1) {
+        var showDate = new Date(newdate.getFullYear(), newdate.getMonth(), 1);
+    } else {
+        var showDate = new Date(today.getFullYear(), today.getMonth(), 1);
+    }
 } else {
     var showDate = new Date(chosen_day.getFullYear(), chosen_day.getMonth(), 1);
 }
 
 // 初期表示
 if (chosen_date === 'False') {
-    window.onload = function () {
-        showProcess(newdate, calendar);
-    };
+    if (data_list[0].length !== 1) {
+        window.onload = function () {
+            showProcess(newdate, calendar);
+        };
+    } else {
+        window.onload = function () {
+            showProcess(today, calendar);
+        };
+    }
 } else {
     window.onload = function () {
         showProcess(chosen_day, calendar);
     };
 }
 
-// 正規表現
+// 正規表現(png)
 function re_tenki(data, icon){
     for (var i = 0; i < data.length; i++) {
         for (var key in icon) {
             var pattern = `^${key}`
-            if (data[i][1].search(pattern) >= 0) {
+            if (data[i][3].search(pattern) >= 0) {
                 data_list[i].push(icon[key]);
             }
         }
     }
+}
+
+// 正規表現(ruby)
+function re_ruby(text, ruby){
+    for (var key in ruby) {
+        var pattern = `${key}`
+        if (text.search(pattern) >= 0) {
+            if (text.slice(text.search(pattern) + key.length, text.search(pattern) + key.length + 4) !== '<rt>') {
+                var a = text.slice(0, text.search(pattern))
+                var b = '<ruby>' + text.slice(text.search(pattern), text.search(pattern) + key.length)
+                var c = `<rt>${ruby[key]}</rt>` + '</ruby>'
+                var d = text.slice(text.search(pattern) + key.length)
+                var text = a + b + c + d
+            }
+        }
+    }
+    return text
 }
 
 // 前の月表示
@@ -122,22 +151,26 @@ function createProcess(year, month) {
                 count++;
                 var mo = month + 1
                 var date = year + "/" + mo + "/" + count;
-                re_tenki(data_list, icon);
+                if (data_list[0].length !== 1) {
+                    re_tenki(data_list, icon);
+                }
                 var match = data_list.filter(e => e[0] === date);
                 if (match.length !== 0
                 ){
+                    var text_ruby = re_ruby(match[0][3], tenki_ruby);
+                    var date_ruby = year + '<ruby>年<rt>ねん</rt></ruby> ' + mo + '<ruby>月<rt>がつ</rt></ruby>' + count + '<ruby>日<rt>にち</rt></ruby>';
                     if (date === chosen_date){
                         calendar += '<td id="tenki">' + `<button type="submit" name="date" id="chosen" value=${date}>` + count + `<br><img src="/static/tenki/${match[0][5]}" height="60px" width="60px" />` + '</button>';
-                        calendar += `<div class="mouseover">${date}<br>${match[0][1]}</div></td>`;
+                        calendar += `<div class="mouseover"><p id="hinichi">${date_ruby}</p><hr><p id="shousai"><ruby>天気<rt>てんき</rt></ruby>：${text_ruby}</p><p id="shousai"><ruby>最高気温<rt>さいこうきおん</rt></ruby>：${match[0][1]} ℃</p><p id="shousai"><ruby>最低気温<rt>さいていきおん</rt></ruby>：${match[0][2]} ℃</p></div></td>`;
                     } else if (date === latest) {
                         calendar += '<td id="tenki">' + `<button type="submit" name="date" id="latest2" value=${date}>` + count + `<br><img src="/static/tenki/${match[0][5]}" height="60px" width="60px" />` + '</button>';
-                        calendar += `<div class="mouseover">${date}<br>${match[0][1]}</div></td>`;
+                        calendar += `<div class="mouseover"><p id="hinichi">${date_ruby}</p><hr><p id="shousai"><ruby>天気<rt>てんき</rt></ruby>：${text_ruby}</p><p id="shousai"><ruby>最高気温<rt>さいこうきおん</rt></ruby>：${match[0][1]} ℃</p><p id="shousai"><ruby>最低気温<rt>さいていきおん</rt></ruby>：${match[0][2]} ℃</p></div></td>`;
                     } else if (date === oldest) {
                         calendar += '<td id="tenki">' + `<button type="submit" name="date" id="oldest2" value=${date}>` + count + `<br><img src="/static/tenki/${match[0][5]}" height="60px" width="60px" />` + '</button>';
-                        calendar += `<div class="mouseover">${date}<br>${match[0][1]}</div></td>`;
+                        calendar += `<div class="mouseover"><p id="hinichi">${date_ruby}</p><hr><p id="shousai"><ruby>天気<rt>てんき</rt></ruby>：${text_ruby}</p><p id="shousai"><ruby>最高気温<rt>さいこうきおん</rt></ruby>：${match[0][1]} ℃</p><p id="shousai"><ruby>最低気温<rt>さいていきおん</rt></ruby>：${match[0][2]} ℃</p></div></td>`;
                     } else {
                         calendar += '<td id="tenki">' + `<button type="submit" name="date" id="icon" value=${date} ontouchstart="">` + count + `<br><img src="/static/tenki/${match[0][5]}" height="60px" width="60px" />` + '</button>';
-                        calendar += `<div class="mouseover">${date}<br>${match[0][1]}</div></td>`;
+                        calendar += `<div class="mouseover"><p id="hinichi">${date_ruby}</p><hr><p id="shousai"><ruby>天気<rt>てんき</rt></ruby>：${text_ruby}</p><p id="shousai"><ruby>最高気温<rt>さいこうきおん</rt></ruby>：${match[0][1]} ℃</p><p id="shousai"><ruby>最低気温<rt>さいていきおん</rt></ruby>：${match[0][2]} ℃</p></div></td>`;
                     }
                 } else {
                     calendar += '<td id="tenki" class="day">' + count + '</td>';
