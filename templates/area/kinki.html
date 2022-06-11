@@ -1,4 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
-<p>ここは北海道のページです</p>
+
+{% if chosen_date %}
+<p>{{ chosen_date }}を選択中</p>
+{% endif %}
+
+<p>ここ近畿のページです</p>
+<div class="dog">
+    <img src="/static/image/kinki.png">
+    <div class="button003">
+        <a class="koube" href="{{ url_for("pick_city", city="神戸") }}">神戸<br>(こうべ)</a>
+        <a class="oosaka" href="{{ url_for("pick_city", city="大阪") }}">大阪<br>(おおさか)</a>
+        <a class="kyouto" href="{{ url_for("pick_city", city="京都") }}">京都<br>(きょうと)</a>
+        <a class="wakayama" href="{{ url_for("pick_city", city="和歌山") }}">和歌山<br>(わかやま)</a>
+        <a class="nara" href="{{ url_for("pick_city", city="奈良") }}">奈良<br>(なら)</a>
+        <a class="hikone" href="{{ url_for("pick_city", city="彦根") }}">彦根<br>(ひこね)</a>
+        <a class="tu" href="{{ url_for("pick_city", city="津") }}">津<br>(つ)</a>
+    </div>
+</div>
 {% endblock %}

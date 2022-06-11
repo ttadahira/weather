@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if chosen_date %}
+<p>{{ chosen_date }}を選択中</p>
+{% endif %}
+
+<p>ここは四国のページです</p>
+<div class="dog">
+    <img src="/static/image/sikok.png">
+    <div class="button003">
+        <a class="takamatu" href="{{ url_for("pick_city", city="高松") }}">高松<br>(たかまつ)</a>
+        <a class="matuyama" href="{{ url_for("pick_city", city="松山") }}">松山<br>(まつやま)</a>
+        <a class="tokusima" href="{{ url_for("pick_city", city="徳島") }}">徳島<br>(とくしま)</a>
+        <a class="kouti" href="{{ url_for("pick_city", city="高知") }}">高知<br>(こうち)</a>
+    </div>
+</div>
+{% endblock %}

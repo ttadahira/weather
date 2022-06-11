@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if chosen_date %}
+<p>{{ chosen_date }}を選択中</p>
+{% endif %}
+
+<p>ここは中国のページです</p>
+<div class="dog">
+    <img src="/static/image/tyuug.png">
+    <div class="button003">
+        <a class="tottori" href="{{ url_for("pick_city", city="鳥取") }}">鳥取<br>(とっとり)</a>
+        <a class="matue" href="{{ url_for("pick_city", city="松江") }}">松江<br>(まつえ)</a>
+        <a class="okayama" href="{{ url_for("pick_city", city="岡山") }}">岡山<br>(おかやま)</a>
+        <a class="hirosima" href="{{ url_for("pick_city", city="広島") }}">広島<br>(ひろしま)</a>
+        <a class="simonoseki" href="{{ url_for("pick_city", city="下関") }}">下関<br>(しものせき)</a>
+    </div>
+</div>
+{% endblock %}
