@@ -61,11 +61,13 @@ header {
     margin-left: 30px;
 }
 .detail {
-    width: fit-content;
-    height: fit-content;
+    width: max-content;
+    height: max-content;
+    min-width: max-content;
+    min-height: max-content;
     margin-top: 40px;
     position: relative;
-    padding: 10px;
+    padding: 10px 25px;
     color: black;
     border: 2px solid #808080;
     background-color: #b3ffff;
@@ -99,15 +101,7 @@ header {
 }
 
 /*カレンダー全体*/
-.wrapper1{
-    width: 620px;
-    margin: 0 auto;
-    padding-left: 230px;
-    padding-right: 230px;
-    padding-bottom: 150px;
-    color: #666;
-}
-.wrapper2{
+.wrapper{
     width: 700px;
     margin: 0 auto;
     padding-left: 190px;
@@ -142,11 +136,12 @@ th {
 }
 td {
     width: 100%;
-    height: 50px;
+    height: 90px;
 }
 th, td {
     outline: 1px solid #808080;
     text-align: center;
+    font-weight: bold;
 }
 /*日曜日*/
 td:first-child {
@@ -168,66 +163,24 @@ td.day {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-#tenki {
-    width: 100%;
-    height: 90px;
-}
 /*データのある日*/
 #selectable {
     font-size: 16px;
+    font-weight: bold;
     background-color: #FAF0BE;
     border: none;
-    color: black;
+    color: inherit;
     width: 100%;
-    height: 70px;
-}
-#latest1 {
-    font-size: 16px;
-    background-color: #fddad1;
-    border: none;
-    color: black;
-    width: 100%;
-    height: 70px;
-}
-#oldest1 {
-    font-size: 16px;
-    background-color: #d1e4e9;
-    border: none;
-    color: black;
-    width: 100%;
-    height: 70px;
+    height: 110px;
 }
 #chosen {
     font-size: 16px;
+    font-weight: bold;
     background-color: #F4DD6C;
     border: none;
-    color: black;
+    color: inherit;
     width: 100%;
     height: 108px;
-}
-#latest2 {
-    font-size: 16px;
-    background-color: #fdd4ca;
-    border: none;
-    color: black;
-    width: 100%;
-    height: 110px;
-}
-#oldest2 {
-    font-size: 16px;
-    background-color: #c9dfe5;
-    border: none;
-    color: black;
-    width: 100%;
-    height: 110px;
-}
-#icon {
-    font-size: 16px;
-    background-color: #FAF0BE;
-    border: none;
-    color: black;
-    width: 100%;
-    height: 110px;
 }
 
 /*ボタン*/
@@ -623,13 +576,7 @@ img {
 #chosen:hover + .mouseover {
     visibility: visible;
 }
-#latest2:hover + .mouseover {
-    visibility: visible;
-}
-#oldest2:hover + .mouseover {
-    visibility: visible;
-}
-#icon:hover + .mouseover {
+#selectable:hover + .mouseover {
     visibility: visible;
 }
 .mouseover {
@@ -654,6 +601,7 @@ img {
 }
 #shousai {
     font-size: 13px;
+    font-weight: normal;
     margin-top: 5px;
 }
 

@@ -19,24 +19,9 @@ for (var i = 0; i < data_list.length; i++) {
     var newdate_element = data_list[i][0].split('/');
     if (i === 0) {
         var newdate = new Date(newdate_element[0], newdate_element[1] - 1, newdate_element[2]);
-        var latest = data_list[i][0]
     } else {
         if (newdate < new Date(newdate_element[0], newdate_element[1] - 1, newdate_element[2])) {
             var newdate = new Date(newdate_element[0], newdate_element[1] - 1, newdate_element[2]); 
-            var latest = data_list[i][0]
-        }
-    }
-}
-// 一番古い日付の取得
-for (var i = 0; i < data_list.length; i++) {
-    var olddate_element = data_list[i][0].split('/');
-    if (i === 0) {
-        var olddate = new Date(olddate_element[0], olddate_element[1] - 1, olddate_element[2]);
-        var oldest = data_list[i][0]
-    } else {
-        if (olddate > new Date(olddate_element[0], olddate_element[1] - 1, olddate_element[2])) {
-            var olddate = new Date(olddate_element[0], olddate_element[1] - 1, olddate_element[2]); 
-            var oldest = data_list[i][0]
         }
     }
 }
@@ -141,11 +126,11 @@ function createProcess(year, month) {
         for (var j = 0; j < week.length; j++) {
             if (i == 0 && j < startDayOfWeek) {
                 // 1行目で1日まで先月の日付を設定
-                calendar += '<td id="tenki" class="disabled">' + (lastMonthEndDate - startDayOfWeek + j + 1) + '</td>';
+                calendar += '<td class="disabled">' + (lastMonthEndDate - startDayOfWeek + j + 1) + '</td>';
             } else if (count >= endDate) {
                 // 最終行で最終日以降、翌月の日付を設定
                 count++;
-                calendar += '<td id="tenki" class="disabled">' + (count - endDate) + '</td>';
+                calendar += '<td class="disabled">' + (count - endDate) + '</td>';
             } else {
                 // 当月の日付を曜日に照らし合わせて設定
                 count++;
@@ -160,20 +145,14 @@ function createProcess(year, month) {
                     var text_ruby = re_ruby(match[0][3], tenki_ruby);
                     var date_ruby = year + '<ruby>年<rt>ねん</rt></ruby> ' + mo + '<ruby>月<rt>がつ</rt></ruby>' + count + '<ruby>日<rt>にち</rt></ruby>';
                     if (date === chosen_date){
-                        calendar += '<td id="tenki">' + `<button type="submit" name="date" id="chosen" value=${date}>` + count + `<br><img src="/static/tenki/${match[0][5]}" height="60px" width="60px" />` + '</button>';
-                        calendar += `<div class="mouseover"><p id="hinichi">${date_ruby}</p><hr><p id="shousai"><ruby>天気<rt>てんき</rt></ruby>：${text_ruby}</p><p id="shousai"><ruby>最高気温<rt>さいこうきおん</rt></ruby>：${match[0][1]} ℃</p><p id="shousai"><ruby>最低気温<rt>さいていきおん</rt></ruby>：${match[0][2]} ℃</p></div></td>`;
-                    } else if (date === latest) {
-                        calendar += '<td id="tenki">' + `<button type="submit" name="date" id="latest2" value=${date}>` + count + `<br><img src="/static/tenki/${match[0][5]}" height="60px" width="60px" />` + '</button>';
-                        calendar += `<div class="mouseover"><p id="hinichi">${date_ruby}</p><hr><p id="shousai"><ruby>天気<rt>てんき</rt></ruby>：${text_ruby}</p><p id="shousai"><ruby>最高気温<rt>さいこうきおん</rt></ruby>：${match[0][1]} ℃</p><p id="shousai"><ruby>最低気温<rt>さいていきおん</rt></ruby>：${match[0][2]} ℃</p></div></td>`;
-                    } else if (date === oldest) {
-                        calendar += '<td id="tenki">' + `<button type="submit" name="date" id="oldest2" value=${date}>` + count + `<br><img src="/static/tenki/${match[0][5]}" height="60px" width="60px" />` + '</button>';
+                        calendar += '<td>' + `<button type="submit" name="date" id="chosen" value=${date}>` + count + `<br><img src="/static/tenki/${match[0][5]}" height="60px" width="60px" />` + '</button>';
                         calendar += `<div class="mouseover"><p id="hinichi">${date_ruby}</p><hr><p id="shousai"><ruby>天気<rt>てんき</rt></ruby>：${text_ruby}</p><p id="shousai"><ruby>最高気温<rt>さいこうきおん</rt></ruby>：${match[0][1]} ℃</p><p id="shousai"><ruby>最低気温<rt>さいていきおん</rt></ruby>：${match[0][2]} ℃</p></div></td>`;
                     } else {
-                        calendar += '<td id="tenki">' + `<button type="submit" name="date" id="icon" value=${date} ontouchstart="">` + count + `<br><img src="/static/tenki/${match[0][5]}" height="60px" width="60px" />` + '</button>';
+                        calendar += '<td>' + `<button type="submit" name="date" id="selectable" value=${date} ontouchstart="">` + count + `<br><img src="/static/tenki/${match[0][5]}" height="60px" width="60px" />` + '</button>';
                         calendar += `<div class="mouseover"><p id="hinichi">${date_ruby}</p><hr><p id="shousai"><ruby>天気<rt>てんき</rt></ruby>：${text_ruby}</p><p id="shousai"><ruby>最高気温<rt>さいこうきおん</rt></ruby>：${match[0][1]} ℃</p><p id="shousai"><ruby>最低気温<rt>さいていきおん</rt></ruby>：${match[0][2]} ℃</p></div></td>`;
                     }
                 } else {
-                    calendar += '<td id="tenki" class="day">' + count + '</td>';
+                    calendar += '<td class="day">' + count + '</td>';
                 }
             }
         }

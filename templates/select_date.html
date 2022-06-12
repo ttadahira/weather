@@ -8,11 +8,12 @@
 <div class="detail-contents">
     <img src="/static/chara.png" height="176px" width="177px" />
     <div class="detail">
-        <p>コメントをここに表示</p>
+        <p><ruby>下<rt>した</rt></ruby>のカレンダーから<b><ruby>色<rt>いろ</rt></ruby>の<ruby>付<rt>つ</rt></ruby>いた<ruby>日<rt>ひ</rt></ruby>にち</b>を<ruby>選<rt>えら</rt></ruby>んでね！</p>
+        <p><b>{{ oldest_year }}<ruby>年<rt>ねん</rt></ruby> {{ oldest_month }}<ruby>月<rt>がつ</rt></ruby>{{ oldest_date }}<ruby>日<rt>にち</rt></ruby> ～ {{ latest_year }}<ruby>年<rt>ねん</rt></ruby> {{ latest_month }}<ruby>月<rt>がつ</rt></ruby>{{ latest_date }}<ruby>日<rt>にち</rt></ruby></b> までのデータがあるよ！</p>
     </div>
 </div>
 <!-- カレンダー -->
-<div class="wrapper1">
+<div class="wrapper">
     <h1 id="calendar-header"></h1>
     <div id="next-prev-button">
         <button id="prev" onclick="prev()">‹</button>

@@ -1,6 +1,7 @@
 # coding: UTF-8
 #コメント（折居）
 import os
+import datetime
 from flask import Flask, render_template, request, redirect, url_for
 
 # デバッグを有効
@@ -42,13 +43,40 @@ def return_top():
 # 日付選択ページ
 @app.route('/select_date', methods = ["POST"])
 def select_date():
-    # htmlに渡す日付データの作成
+    # htmlに渡す日付リストの作成
     date_list = []
+    count = 0
     for line in data:
-        date_list.append(line[0])
+        if line[0] not in date_list:
+            count += 1
+            date_list.append(line[0])
+            # 一番古い日付と一番新しい日付の取得
+            get_date = line[0].split('/')
+            date_time = datetime.date(int(get_date[0]), int(get_date[1]), int(get_date[2]))
+            if count == 1:
+                oldest_list = [date_time, get_date]
+                latest_list = [date_time, get_date]
+            else:
+                # 一番古い日付
+                if date_time < oldest_list[0]:
+                    oldest_list = [date_time, get_date]
+                # 一番新しい日付
+                if date_time > latest_list[0]:
+                    latest_list = [date_time, get_date]
+    # 古い日付をグローバル化
+    global oldest_year, oldest_month, oldest_date
+    oldest_year = oldest_list[1][0]
+    oldest_month = oldest_list[1][1]
+    oldest_date = oldest_list[1][2]
+    # 新しい日付をグローバル化
+    global latest_year, latest_month, latest_date
+    latest_year = latest_list[1][0]
+    latest_month = latest_list[1][1]
+    latest_date = latest_list[1][2]
+    # htmlに渡す日付データの作成
     date = ",".join(date_list)
     # select_date.htmlを実行
-    return render_template('select_date.html', date=date)
+    return render_template('select_date.html', date=date, oldest_year=oldest_year, oldest_month=oldest_month, oldest_date=oldest_date ,latest_year=latest_year, latest_month=latest_month, latest_date=latest_date)
 
 @app.route('/index', methods = ["POST"])
 def index():
