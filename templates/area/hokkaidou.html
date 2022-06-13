@@ -1,18 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% if chosen_date %}
-<p>{{ chosen_date }}を選択中</p>
+<!-- ページ説明 -->
+<div class="page">
+    <p>コメントをここに表示</p>
+</div><br>
+<!--rendertemplateから変数cityを入手して代入-->
+{% if chosen_year %}
+<div class="choose">
+    <p><ruby>日<rt>ひ</rt></ruby>づけ - {{ chosen_year }}<ruby>年<rt>ねん</rt></ruby> {{ chosen_month }}<ruby>月<rt>がつ</rt></ruby>{{ chosen_day }}<ruby>日<rt>にち</rt></ruby></p>
+</div>
 {% endif %}
+<div class="choose">
+    <p><ruby>地方<rt>ちほう</rt></ruby> - <ruby>北海道<rt>ほっかいどう</rt></ruby></p>
+</div>
+<!-- キャラ説明文 -->
+<div class="detail-contents">
+    <img src="/static/chara.png" height="176px" width="177px" />
+    <div class="detail">
+        <p>コメントをここに表示</p>
+    </div>
+</div>
 
-<p>ここは北海道のページです</p>
 <div class="dog">
     <img src="/static/image/hokai.png">
     <div class="button003">
-        <a href="{{ url_for("pick_city", city="稚内") }}">稚内</a>
-        <a class="sapporo" href="{{ url_for("pick_city", city="札幌") }}">札幌<br>(さっぽろ)</a>
-        <a class="muroran" href="{{ url_for("pick_city", city="室蘭") }}">室蘭<br>(むろらん)</a>
-        <a class="hakodate" href="{{ url_for("pick_city", city="函館") }}">函館<br>(はこだて)</a>
+        <a href="{{ url_for("pick_city", region="北海道", city="稚内") }}">稚内</a>
+        <a class="sapporo" href="{{ url_for("pick_city", region="北海道", city="札幌") }}">札幌<br>(さっぽろ)</a>
+        <a class="muroran" href="{{ url_for("pick_city", region="北海道", city="室蘭") }}">室蘭<br>(むろらん)</a>
+        <a class="hakodate" href="{{ url_for("pick_city", region="北海道", city="函館") }}">函館<br>(はこだて)</a>
     </div>
 </div>
 {% endblock %}

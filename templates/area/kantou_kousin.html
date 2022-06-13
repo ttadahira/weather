@@ -1,21 +1,37 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% if chosen_date %}
-<p>{{ chosen_date }}を選択中</p>
+<!-- ページ説明 -->
+<div class="page">
+    <p>コメントをここに表示</p>
+</div><br>
+<!--rendertemplateから変数cityを入手して代入-->
+{% if chosen_year %}
+<div class="choose">
+    <p><ruby>日<rt>ひ</rt></ruby>づけ - {{ chosen_year }}<ruby>年<rt>ねん</rt></ruby> {{ chosen_month }}<ruby>月<rt>がつ</rt></ruby>{{ chosen_day }}<ruby>日<rt>にち</rt></ruby></p>
+</div>
 {% endif %}
+<div class="choose">
+    <p><ruby>地方<rt>ちほう</rt></ruby> - <ruby>関東<rt>かんとう</rt></ruby></p>
+</div>
+<!-- キャラ説明文 -->
+<div class="detail-contents">
+    <img src="/static/chara.png" height="176px" width="177px" />
+    <div class="detail">
+        <p>コメントをここに表示</p>
+    </div>
+</div>
 
-<p>ここは関東のページです</p>
 <div class="dog">
     <img src="/static/image/kanto.png">
     <div class="button003">
-        <a class="maebasi" href="{{ url_for("pick_city", city="前橋") }}">前橋<br>(まえばし)</a>
-        <a class="utunomiya" href="{{ url_for("pick_city", city="宇都宮") }}">宇都宮<br>(うつのみや)</a>
-        <a class="kumagaya" href="{{ url_for("pick_city", city="熊谷") }}">熊谷<br>(くまがや)</a>
-        <a class="mito" href="{{ url_for("pick_city", city="水戸") }}">水戸<br>(みと)</a>
-        <a class="toukyou" href="{{ url_for("pick_city", city="東京") }}">東京<br>(とうきょう)</a>
-        <a class="tyousi" href="{{ url_for("pick_city", city="銚子") }}">銚子<br>(ちょうし)</a>
-        <a class="yokohama" href="{{ url_for("pick_city", city="横浜") }}">横浜<br>(よこはま)</a>
+        <a class="maebasi" href="{{ url_for("pick_city", region="関東", city="前橋") }}">前橋<br>(まえばし)</a>
+        <a class="utunomiya" href="{{ url_for("pick_city", region="関東", city="宇都宮") }}">宇都宮<br>(うつのみや)</a>
+        <a class="kumagaya" href="{{ url_for("pick_city", region="関東", city="熊谷") }}">熊谷<br>(くまがや)</a>
+        <a class="mito" href="{{ url_for("pick_city", region="関東", city="水戸") }}">水戸<br>(みと)</a>
+        <a class="toukyou" href="{{ url_for("pick_city", region="関東", city="東京") }}">東京<br>(とうきょう)</a>
+        <a class="tyousi" href="{{ url_for("pick_city", region="関東", city="銚子") }}">銚子<br>(ちょうし)</a>
+        <a class="yokohama" href="{{ url_for("pick_city", region="関東", city="横浜") }}">横浜<br>(よこはま)</a>
     </div>
 </div>
 {% endblock %}
