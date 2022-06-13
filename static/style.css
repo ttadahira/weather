@@ -17,7 +17,8 @@ header {
     padding-top: 10px;
     padding-bottom: 10px;
     min-width: 1064px;
-    background-color: #AEEEF2;
+    background-color: #6289FF;
+    border-radius: 10px;
 }
 #logo {
     padding-top: 2px;
