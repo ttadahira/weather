@@ -17,7 +17,8 @@ header {
     padding-top: 10px;
     padding-bottom: 10px;
     min-width: 1064px;
-    background-color: #AEEEF2;
+    background-color: #6289FF;
+    border-radius: 10px;
 }
 #logo {
     padding-top: 2px;
@@ -323,8 +324,8 @@ img {
 /*北海道のボタン配置*/
 .dog > .button003 > .sapporo {
     position: absolute;
-    top: 280px;
-    left: 190px;
+    top: 320px;
+    left: 120px;
     }
 
 .dog > .button003 > .muroran {
@@ -337,6 +338,16 @@ img {
     position: absolute;
     top: 509px;
     left: 140px;   
+    }
+.dog > .button003 > .asahikawa {
+    position: absolute;
+    top: 200px;
+    left: 260px;   
+    }
+.dog > .button003 > .kusiro {
+    position: absolute;
+    top: 290px;
+    left: 420px;   
     }
 /*東北のボタン配置*/
 .dog > .button003 > .aomori {

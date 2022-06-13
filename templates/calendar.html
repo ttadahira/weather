@@ -3,7 +3,7 @@
 {% block content %}
 <!-- ページ説明 -->
 <div class="page">
-    <p>コメントをここに表示</p>
+    <p><ruby>天気<rt>てんき</rt></ruby>を<ruby>表示<rt>ひょうじ</rt></ruby></p>
 </div><br>
 <!--rendertemplateから変数cityを入手して代入-->
 {% if chosen_year %}
@@ -11,14 +11,51 @@
     <p><ruby>日<rt>ひ</rt></ruby>づけ - {{ chosen_year }}<ruby>年<rt>ねん</rt></ruby> {{ chosen_month }}<ruby>月<rt>がつ</rt></ruby>{{ chosen_day }}<ruby>日<rt>にち</rt></ruby></p>
 </div>
 {% endif %}
+<!--rendertemplateから変数regionを入手して代入-->
+{% if region == '北海道' %}
 <div class="choose">
-    <p>{{ city }}のカレンダーを表示</p>
+    <p><ruby>地方<rt>ちほう</rt></ruby> - <ruby>北海道<rt>ほっかいどう</rt></ruby></p>
+</div>
+{% elif region == '関東' %}
+<div class="choose">
+    <p><ruby>地方<rt>ちほう</rt></ruby> - <ruby>関東<rt>かんとう</rt></ruby></p>
+</div>
+{% elif region == '近畿' %}
+<div class="choose">
+    <p><ruby>地方<rt>ちほう</rt></ruby> - <ruby>近畿<rt>きんき</rt></ruby></p>
+</div>
+{% elif region == '九州・沖縄' %}
+<div class="choose">
+    <p><ruby>地方<rt>ちほう</rt></ruby> - <ruby>九州<rt>きゅうしゅう</rt></ruby>・<ruby>沖縄<rt>おきなわ</rt></ruby></p>
+</div>
+{% elif region == '四国' %}
+<div class="choose">
+    <p><ruby>地方<rt>ちほう</rt></ruby> - <ruby>四国<rt>しこく</rt></ruby></p>
+</div>
+{% elif region == '東北' %}
+<div class="choose">
+    <p><ruby>地方<rt>ちほう</rt></ruby> - <ruby>東北<rt>とうほく</rt></ruby></p>
+</div>
+{% elif region == '中部' %}
+<div class="choose">
+    <p><ruby>地方<rt>ちほう</rt></ruby> - <ruby>中部<rt>ちゅうぶ</rt></ruby></p>
+</div>
+{% elif region == '中国' %}
+<div class="choose">
+    <p><ruby>地方<rt>ちほう</rt></ruby> - <ruby>中国<rt>ちゅうごく</rt></ruby></p>
+</div>
+{% endif %}
+<div class="choose">
+    <p><ruby>地名<rt>ちめい</rt></ruby> - <ruby>{{ city }}<rt>{{ city_ruby }}</rt></ruby></p>
 </div>
 <!-- キャラ説明文 -->
 <div class="detail-contents">
     <img src="/static/chara.png" height="176px" width="177px" />
     <div class="detail">
-        <p>コメントをここに表示</p>
+        <p><ruby>下<rt>した</rt></ruby>のカレンダーから<ruby>天気<rt>てんき</rt></ruby>を<ruby>確認<rt>かくにん</rt></ruby>しよう！</p>
+        <p><ruby>気<rt>き</rt></ruby>になった<ruby>日<rt>ひ</rt></ruby>にちにマウスカーソルを<ruby>合<rt>あ</rt></ruby>わせると<ruby>詳<rt>くわ</rt></ruby>しい<ruby>情報<rt>じょうほう</rt></ruby>が<ruby>確認<rt>かくにん</rt></ruby>できるよ！</p>
+        <p><ruby>違<rt>ちが</rt></ruby>う<ruby>地域<rt>ちいき</rt></ruby>の<ruby>天気<rt>てんき</rt></ruby>が<ruby>見<rt>み</rt></ruby>たいときは、<ruby>下<rt>した</rt></ruby>のカレンダーから<b><ruby>色<rt>いろ</rt></ruby>の<ruby>付<rt>つ</rt></ruby>いた<ruby>日<rt>ひ</rt></ruby>にち</b>を<ruby>選<rt>えら</rt></ruby>んでね！</p>
+        <p><b>{{ oldest_year }}<ruby>年<rt>ねん</rt></ruby> {{ oldest_month }}<ruby>月<rt>がつ</rt></ruby>{{ oldest_day }}<ruby>日<rt>にち</rt></ruby> ～ {{ latest_year }}<ruby>年<rt>ねん</rt></ruby> {{ latest_month }}<ruby>月<rt>がつ</rt></ruby>{{ latest_day }}<ruby>日<rt>にち</rt></ruby></b> までのデータがあるよ！</p>
     </div>
 </div>
 <!-- カレンダー -->
