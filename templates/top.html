@@ -1,11 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
-<!-- 日づけ検索ボタン -->
-<form method="POST" action="/select_date">
-    <button id="day">日づけからけんさく</button>
-</form>
-<!-- 地域検索ボタン -->
-<form method="POST" action="/select_region">
-    <button id="region">地域からけんさく</button>
-</form>
+<div class="search_button">
+    <!-- 日づけ検索ボタン -->
+    <form method="POST" action="/select_date">
+        <button id="day">
+            <p><ruby>日<rt>ひ</rt></ruby>づけから<br />けんさく</p>
+            <img src="static/image/calender_takujou.png" id="day_img" />
+        </button>
+    </form>
+    <!-- 地域検索ボタン -->
+    <form method="POST" action="/select_region">
+        <button id="region">
+            <p><ruby>地域<rt>ちいき</rt></ruby>から<br />けんさく</p>
+            <img src="static/image/color_area.png" id="region_img" />
+        </button>
+    </form>
+    <link rel="stylesheet" href="static/top.css">
+</div>
 {% endblock %}

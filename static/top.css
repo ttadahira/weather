@@ -1,7 +1,11 @@
+* {
+    font-family: sans-serif;
+}
+
 /*ヘッダー*/
 header {
     width: 100%;
-    background-color: #FFA500;
+    background-color: #AEEEF2;
 }
 
 #logo {
@@ -14,4 +18,53 @@ header {
     display: inline-block;
     color: white;
     vertical-align: middle;
+    width: 30%;
+    height: 10%;
+}
+
+/*トップ画面ボタン*/
+.search_button{
+    display: flex;
+    justify-content: space-around;
+    margin: 100px 200px 100px 200px;
+    text-align: center;
+}
+
+#day{
+    display: flex;
+    background-color: #6289FF;
+    padding: 70px 100px 50px 50px;
+    margin: 20px;
+    border: 0px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: left;
+    letter-spacing: 3px;
+    color: white;
+}
+
+#region{
+    display: flex;
+    background-color: #6289FF;
+    padding: 70px 160px 50px 50px;
+    margin: 20px;
+    border: 0px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 40px;
+    letter-spacing: 3px;
+    color: white;
+}
+
+#day_img{
+    width: 200px; 
+    height: 150px;
+    margin: 10px -70px 20px 40px;
+}
+
+#region_img{
+    width: 200px; 
+    height: 150px;
+    margin: 10px -90px 20px 40px;
 }
