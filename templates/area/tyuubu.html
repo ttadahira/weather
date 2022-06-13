@@ -1,23 +1,39 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% if chosen_date %}
-<p>{{ chosen_date }}を選択中</p>
+<!-- ページ説明 -->
+<div class="page">
+    <p>コメントをここに表示</p>
+</div><br>
+<!--rendertemplateから変数cityを入手して代入-->
+{% if chosen_year %}
+<div class="choose">
+    <p><ruby>日<rt>ひ</rt></ruby>づけ - {{ chosen_year }}<ruby>年<rt>ねん</rt></ruby> {{ chosen_month }}<ruby>月<rt>がつ</rt></ruby>{{ chosen_day }}<ruby>日<rt>にち</rt></ruby></p>
+</div>
 {% endif %}
+<div class="choose">
+    <p><ruby>地方<rt>ちほう</rt></ruby> - <ruby>中部<rt>ちゅうぶ</rt></ruby></p>
+</div>
+<!-- キャラ説明文 -->
+<div class="detail-contents">
+    <img src="/static/chara.png" height="176px" width="177px" />
+    <div class="detail">
+        <p>コメントをここに表示</p>
+    </div>
+</div>
 
-<p>ここは中部のページです</p>
 <div class="dog">
     <img src="/static/image/tyuub.png">
     <div class="button003">
-        <a class="niigata" href="{{ url_for("pick_city", city="新潟") }}">新潟<br>(にいがた)</a>
-        <a class="toyama" href="{{ url_for("pick_city", city="富山") }}">富山<br>(とやま)</a>
-        <a class="kanazawa" href="{{ url_for("pick_city", city="金沢") }}">金沢<br>(かなざわ)</a>
-        <a class="hukui" href="{{ url_for("pick_city", city="福井") }}">福井<br>(ふくい)</a>
-        <a class="nagano" href="{{ url_for("pick_city", city="長野") }}">長野<br>(ながの)</a>
-        <a class="gihu" href="{{ url_for("pick_city", city="岐阜") }}">岐阜<br>(ぎふ)</a>
-        <a class="kouhu" href="{{ url_for("pick_city", city="甲府") }}">甲府<br>(こうふ)</a>
-        <a class="sizuoka" href="{{ url_for("pick_city", city="静岡") }}">静岡<br>(しずおか)</a>
-        <a class="nagoya" href="{{ url_for("pick_city", city="名古屋") }}">名古屋<br>(なごや)</a>
+        <a class="niigata" href="{{ url_for("pick_city", region="中部", city="新潟") }}">新潟<br>(にいがた)</a>
+        <a class="toyama" href="{{ url_for("pick_city", region="中部", city="富山") }}">富山<br>(とやま)</a>
+        <a class="kanazawa" href="{{ url_for("pick_city", region="中部", city="金沢") }}">金沢<br>(かなざわ)</a>
+        <a class="hukui" href="{{ url_for("pick_city", region="中部", city="福井") }}">福井<br>(ふくい)</a>
+        <a class="nagano" href="{{ url_for("pick_city", region="中部", city="長野") }}">長野<br>(ながの)</a>
+        <a class="gihu" href="{{ url_for("pick_city", region="中部", city="岐阜") }}">岐阜<br>(ぎふ)</a>
+        <a class="kouhu" href="{{ url_for("pick_city", region="中部", city="甲府") }}">甲府<br>(こうふ)</a>
+        <a class="sizuoka" href="{{ url_for("pick_city", region="中部", city="静岡") }}">静岡<br>(しずおか)</a>
+        <a class="nagoya" href="{{ url_for("pick_city", region="中部", city="名古屋") }}">名古屋<br>(なごや)</a>
     </div>
 </div>
 {% endblock %}
