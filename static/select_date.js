@@ -8,24 +8,9 @@ for (var i = 0; i < date_list.length; i++) {
     var newdate_element = date_list[i].split('/');
     if (i === 0) {
         var newdate = new Date(newdate_element[0], newdate_element[1] - 1, newdate_element[2]);
-        var latest = date_list[i]
     } else {
         if (newdate < new Date(newdate_element[0], newdate_element[1] - 1, newdate_element[2])) {
             var newdate = new Date(newdate_element[0], newdate_element[1] - 1, newdate_element[2]); 
-            var latest = date_list[i]
-        }
-    }
-}
-// 一番古い日付の取得
-for (var i = 0; i < date_list.length; i++) {
-    var olddate_element = date_list[i].split('/');
-    if (i === 0) {
-        var olddate = new Date(olddate_element[0], olddate_element[1] - 1, olddate_element[2]);
-        var oldest = date_list[i]
-    } else {
-        if (olddate > new Date(olddate_element[0], olddate_element[1] - 1, olddate_element[2])) {
-            var olddate = new Date(olddate_element[0], olddate_element[1] - 1, olddate_element[2]); 
-            var oldest = date_list[i]
         }
     }
 }
@@ -91,13 +76,7 @@ function createProcess(year, month) {
                 var mo = month + 1
                 var date = year + "/" + mo + "/" + count;
                 if (date_list.indexOf(date) > -1) { 
-                    if (date === latest) {
-                        calendar += '<td>' + `<button type="submit" name="date" id="latest1" value=${date}>` + count + '</button></td>';
-                    } else if (date === oldest) {
-                        calendar += '<td>' + `<button type="submit" name="date" id="oldest1" value=${date}>` + count + '</button></td>';
-                    } else {
-                        calendar += '<td>' + `<button type="submit" name="date" id="selectable" value=${date}>` + count + '</button></td>';
-                    }
+                    calendar += '<td>' + `<button type="submit" name="date" id="selectable" value=${date}>` + count + '</button></td>';
                 } else {
                     calendar += '<td class="day">' + count + '</td>';
                 }
