@@ -1,44 +1,24 @@
-* {
-    font-family: sans-serif;
-}
-
-/*ヘッダー*/
-header {
-    width: 100%;
-    background-color: #6289FF;
-}
-
-#logo {
-    margin-left: 10px;
-    vertical-align: middle;
-}
-
-#title {
-    margin-left: 10px;
-    display: inline-block;
-    color: white;
-    vertical-align: middle;
-    width: 30%;
-    height: 10%;
-}
-
 /*トップ画面ボタン*/
 .search_button{
     display: flex;
     justify-content: space-around;
-    margin: 100px 200px 100px 200px;
+    margin: 70px 200px 100px 200px;
     text-align: center;
 }
 
 #day{
     display: flex;
     background-color: #6289FF;
-    padding: 70px 100px 50px 50px;
+    width: max-content;
+    height: max-content;
+    min-width: max-content;
+    min-height: max-content;
+    padding: 70px 95px 50px 50px;
     margin: 20px;
     border: 0px;
     border-radius: 20px;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 34px;
     text-align: left;
     letter-spacing: 3px;
     color: white;
@@ -47,12 +27,16 @@ header {
 #region{
     display: flex;
     background-color: #6289FF;
-    padding: 70px 160px 50px 50px;
+    width: max-content;
+    height: max-content;
+    min-width: max-content;
+    min-height: max-content;
+    padding: 70px 137px 50px 50px;
     margin: 20px;
     border: 0px;
     border-radius: 20px;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 34px;
     letter-spacing: 3px;
     color: white;
 }
@@ -60,11 +44,11 @@ header {
 #day_img{
     width: 200px; 
     height: 150px;
-    margin: 10px -70px 20px 40px;
+    margin: -20px -70px 20px 40px;
 }
 
 #region_img{
-    width: 200px; 
+    width: 215px; 
     height: 150px;
-    margin: 10px -90px 20px 40px;
+    margin: -20px -90px 20px 40px;
 }
