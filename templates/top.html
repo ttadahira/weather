@@ -1,5 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
+<!-- ページ説明 -->
+<div class="page">
+    <p><ruby>検索<rt>けんさく</rt></ruby><ruby>方法<rt>ほうほう</rt></ruby>を<ruby>選択<rt>せんたく</rt></ruby></p>
+</div>
+<!-- キャラ説明文 -->
+<div class="detail-contents">
+    <img src="/static/chara.png" height="200px" width="200px" />
+    <div class="detail">
+        <p><ruby>下<rt>した</rt></ruby>のボタンから <span id="black"><ruby>検索<rt>けんさく</rt></ruby><ruby>方法<rt>ほうほう</rt></ruby></span> を<ruby>選<rt>えら</rt></ruby>んでね！</p>
+        <p>このページに<ruby>戻<rt>もど</rt></ruby>りたいときは <ruby>左上<rt>ひだりうえ</rt></ruby>のロゴ を<ruby>押<rt>お</rt></ruby>してね！</p>
+    </div>
+</div>
+
 <div class="search_button">
     <!-- 日づけ検索ボタン -->
     <form method="POST" action="/select_date">
