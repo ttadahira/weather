@@ -1,0 +1,9 @@
+AuthType Basic
+AuthName The-T-Directory
+AuthBasicProvider file
+AuthUserFile /var/www/html/.htpasswd
+require valid-user
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /index.cgi/$1 [L]

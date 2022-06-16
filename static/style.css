@@ -20,7 +20,7 @@ header {
     padding-top: 15px;
     padding-bottom: 15px;
     min-width: 1064px;
-    background-color: #6289FF;
+    background-color: #bacbFF;
     border-radius: 10px;
 }
 #logo {
@@ -75,8 +75,7 @@ header {
     font-weight: bold;
     width: max-content;
     height: max-content;
-    min-width: max-content;
-    min-height: max-content;
+    max-width: 774px;
     margin-top: 40px;
     margin-left: 2.5%;
     margin-bottom: 50px;

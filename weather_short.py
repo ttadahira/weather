@@ -2,7 +2,8 @@
 #コメント（折居）
 import os
 import datetime
-from flask import Flask, render_template, request, redirect, url_for
+from datetime import timedelta
+from flask import Flask, render_template, request, redirect, url_for, session
 
 # デバッグを有効
 os.environ["FLASK_ENV"] = "development"
@@ -44,38 +45,34 @@ latest_year = latest_list[1][0]
 latest_month = latest_list[1][1]
 latest_day = latest_list[1][2]
 
-#dateの初期値はFalse
-chosen_date = False
-chosen_year = False
-chosen_month = False
-chosen_day = False
-
 app = Flask(__name__)
+
+app.secret_key = 'tamagosand'
+app.permanent_session_lifetime = timedelta(minutes=60)
 
 # トップページ
 @app.route('/')
 def top():
     #トップページに遷移するとdateを初期化する
-    global chosen_date, chosen_year, chosen_month, chosen_day
-    chosen_date = False
-    chosen_year = False
-    chosen_month = False
-    chosen_day = False
+    session['chosen_date'] = False
+    session['chosen_year'] = False
+    session['chosen_month'] = False
+    session['chosen_day'] = False
     return render_template('top.html')
 
 # トップページ(ロゴからの遷移用)
-@app.route('/', methods = ["POST"])
+@app.route('/', methods = ["POST", "GET"])
 def return_top():
     #トップページに遷移するとdateを初期化する
-    global chosen_date, chosen_year, chosen_month, chosen_day
-    chosen_date = False
-    chosen_year = False
-    chosen_month = False
-    chosen_day = False
+    if session['chosen_date'] != False:
+        session['chosen_date'] = False
+        session['chosen_year'] = False
+        session['chosen_month'] = False
+        session['chosen_day'] = False
     return render_template('top.html')
 
 # 日付選択ページ
-@app.route('/select_date', methods = ["POST"])
+@app.route('/select_date', methods = ["POST", "GET"])
 def select_date():
     # htmlに渡す日付データの作成
     date_list = []
@@ -86,15 +83,18 @@ def select_date():
     # select_date.htmlを実行
     return render_template('select_date.html', date=date, oldest_year=oldest_year, oldest_month=oldest_month, oldest_day=oldest_day ,latest_year=latest_year, latest_month=latest_month, latest_day=latest_day)
 
-@app.route('/index', methods = ["POST"])
+@app.route('/select_together', methods = ["POST", "GET"])
 def index():
     # ユーザに選択された日付
     date = request.form['date']
-    global chosen_date, chosen_year, chosen_month, chosen_day
     chosen_date = date.split('/')
     chosen_year = chosen_date[0]
     chosen_month = chosen_date[1]
     chosen_day = chosen_date[2]
+    session['chosen_date'] = chosen_date
+    session['chosen_year'] = chosen_year
+    session['chosen_month'] = chosen_month
+    session['chosen_day'] = chosen_day
     return render_template('select_region.html', chosen_year=chosen_year, chosen_month=chosen_month, chosen_day=chosen_day)
 
 @app.route('/select_region', methods = ["POST", "GET"])
@@ -104,6 +104,10 @@ def select_region():
 @app.route('/select_region/<area>', methods = ["POST", "GET"])
 def select_area(area):
     area = str(area)
+    if 'chosen_date' in session:
+        chosen_year = session['chosen_year']
+        chosen_month = session['chosen_month']
+        chosen_day = session['chosen_day']
     return render_template(f'area/{area}.html', chosen_year=chosen_year, chosen_month=chosen_month, chosen_day=chosen_day)
 
 # カレンダー表示ページ
@@ -125,6 +129,11 @@ def pick_city(region, city):
                  "彦根":"ひこね", "広島":"ひろしま", "岡山":"おかやま", "神戸":"こうべ", "大阪":"おおさか", "和歌山":"わかやま", "奈良":"なら", "松山":"まつやま", "高松":"たかまつ", "高知":"こうち", "徳島":"とくしま", \
                  "下関":"しものせき", "福岡":"ふくおか", "佐賀":"さが", "大分":"おおいた", "長崎":"ながさき", "熊本":"くまもと", "鹿児島":"かごしま", "宮崎":"みやざき", "那覇":"なは"}
     city_ruby = city_dict[city]
+    if 'chosen_date' in session:
+        chosen_date = session['chosen_date']
+        chosen_year = session['chosen_year']
+        chosen_month = session['chosen_month']
+        chosen_day = session['chosen_day']
     return render_template('calendar.html', region=region, city=city, city_ruby=city_ruby, chosen_date=chosen_date, chosen_year=chosen_year, chosen_month=chosen_month, chosen_day=chosen_day, oldest_year=oldest_year, oldest_month=oldest_month, oldest_day=oldest_day ,latest_year=latest_year, latest_month=latest_month, latest_day=latest_day, data=data_str)
 
 
